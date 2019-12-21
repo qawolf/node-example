@@ -5,7 +5,7 @@ describe("localhost", () => {
   let browser;
 
   beforeAll(async () => {
-    browser = await launch({ url: "http://localhost:3000/" });
+    browser = await launch({ url: process.env.URL });
   });
 
   afterAll(() => browser.close());
