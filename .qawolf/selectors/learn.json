@@ -1,0 +1,24 @@
+[
+ {
+  "index": 0,
+  "page": 0,
+  "html": {
+   "ancestors": [
+    "<header class=\"App-header\"></header>",
+    "<div class=\"App\"></div>"
+   ],
+   "node": "<a class=\"App-link\" href=\"https://reactjs.org\" target=\"_blank\" rel=\"noopener noreferrer\" innertext=\"Learn React\">Learn React</a>"
+  }
+ },
+ {
+  "index": 1,
+  "page": 1,
+  "html": {
+   "ancestors": [
+    "<nav class=\"css-79txt3\"></nav>",
+    "<div class=\"css-iiezwn\"></div>"
+   ],
+   "node": "<a class=\"css-hobwqm\" href=\"/docs/getting-started.html\" innertext=\"Docs\">Docs</a>"
+  }
+ }
+]
