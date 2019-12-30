@@ -1,0 +1,17 @@
+qawolf:
+  image: qawolf/qawolf:v0.7.11
+  script: qawolf test
+  variables:
+    # output artifacts
+    QAW_DOM_PATH: $CI_PROJECT_DIR/artifacts
+    QAW_LOG_PATH: $CI_PROJECT_DIR/artifacts
+    QAW_VIDEO_PATH: $CI_PROJECT_DIR/artifacts
+    ## configure tests with environment variables
+    ## https://docs.qawolf.com/docs/configuration
+    # QAW_SLEEP_MS: 0
+    ## you can also use GitLab protected environment variables
+    ## https://docs.gitlab.com/ee/ci/variables/#protected-environment-variables
+    # LOGIN_PASSWORD: $SECRET_PASSWORD
+  artifacts:
+    paths:
+      - $CI_PROJECT_DIR/artifacts
