@@ -1,7 +1,6 @@
 [
  {
   "index": 0,
-  "page": 0,
   "html": {
    "ancestors": [
     "<header class=\"App-header\"></header>",
@@ -12,7 +11,6 @@
  },
  {
   "index": 1,
-  "page": 1,
   "html": {
    "ancestors": [
     "<nav class=\"css-79txt3\"></nav>",
