@@ -32,7 +32,7 @@
     ]
   },
   "devDependencies": {
-    "qawolf": "^0.8.0-alpha.0",
+    "qawolf": "^0.8.0-alpha.2",
     "wait-on": "^3.3.0"
   }
 }

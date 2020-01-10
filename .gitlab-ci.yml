@@ -1,5 +1,9 @@
 qawolf:
-  image: qawolf/qawolf@sha256:77f687a3c0d80cb1210b33d4f3945e37f99773a0b93a927a94c987df1cce0b4d
+  image: qawolf/qawolf@v0.8.0-alpha.2
+
+  cache:
+    paths:
+      - node_modules/
 
   script:
     - npm install
