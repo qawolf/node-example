@@ -1,5 +1,5 @@
 qawolf:
-  image: qawolf/qawolf@v0.8.0-alpha.2
+  image: qawolf/qawolf:v0.8.0-alpha.2
 
   cache:
     paths:
@@ -7,13 +7,11 @@ qawolf:
 
   script:
     - npm install
-    - npm run start &
-    - npx wait-on http://localhost:3000
+    - npm run start & npx wait-on http://localhost:3000
     - npx qawolf test
 
   variables:
     QAW_ARTIFACT_PATH: $CI_PROJECT_DIR/artifacts
-    # connect to the node server
     URL: http://localhost:3000
 
   artifacts:

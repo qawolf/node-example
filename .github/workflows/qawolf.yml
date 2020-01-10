@@ -7,19 +7,25 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - uses: actions/setup-node@v1
 
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - run: npm install
 
-      - run: npm run start & npx wait-on http://localhost:3000
+      - name: Start local server
+        run: npm run start & npx wait-on http://localhost:3000
 
       - run: npx qawolf test
         env:
           QAW_ARTIFACT_PATH: ${{ github.workspace }}/artifacts
-          QAW_LOG_LEVEL: debug
-          # connect to the node server
           URL: http://localhost:3000
 
       - name: Upload Artifacts
