@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12.14.0-browsers
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+
+      - run:
+          command: npm install
+
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+
+      - run:
+          command: |
+            npm run start & 
+            npx wait-on http://localhost:3000
+            npx qawolf test
+          environment:
+            QAW_ARTIFACT_PATH: /tmp/artifacts
+            URL: http://localhost:3000
+
+      - store_artifacts:
+          path: /tmp/artifacts
