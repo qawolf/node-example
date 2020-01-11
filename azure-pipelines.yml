@@ -1,0 +1,20 @@
+pool:
+  vmImage: "ubuntu-18.04"
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "12.x"
+
+  - script: npm install
+
+  - script: npm run start & npx wait-on http://localhost:3000
+
+  - script: npx qawolf test
+    env:
+      QAW_ARTIFACT_PATH: $(System.DefaultWorkingDirectory)/artifacts
+      URL: http://localhost:3000
+
+  - publish: $(System.DefaultWorkingDirectory)/artifacts
+    artifact: artifacts
+    condition: always()

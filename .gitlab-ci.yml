@@ -1,0 +1,21 @@
+qawolf:
+  image: qawolf/qawolf:v0.8.0-alpha.2
+
+  cache:
+    paths:
+      - node_modules/
+
+  script:
+    - npm install
+    - npm run start & npx wait-on http://localhost:3000
+    - npx qawolf test
+
+  variables:
+    QAW_ARTIFACT_PATH: $CI_PROJECT_DIR/artifacts
+    URL: http://localhost:3000
+
+  artifacts:
+    when: always
+    paths:
+      - $CI_PROJECT_DIR/artifacts
+    expire_in: 1 week

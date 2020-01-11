@@ -1,11 +1,11 @@
 const { launch } = require("qawolf");
 const selectors = require("../selectors/learn");
 
-describe("localhost", () => {
+describe("learn", () => {
   let browser;
 
   beforeAll(async () => {
-    browser = await launch({ url: process.env.URL });
+    browser = await launch({ url: "http://localhost:3000/" });
   });
 
   afterAll(() => browser.close());
@@ -15,6 +15,6 @@ describe("localhost", () => {
   });
 
   it('can click "Docs" link', async () => {
-    await browser.click(selectors[1]);
+    await browser.click(selectors[1], { page: 1 });
   });
 });
