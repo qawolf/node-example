@@ -1,7 +1,5 @@
 pool:
-  vmImage: "ubuntu-16.04"
-
-container: qawolf
+  vmImage: "ubuntu-18.04"
 
 steps:
   - task: NodeTool@0
