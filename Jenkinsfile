@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'qawolf/qawolf:v0.9.0-alpha.4'
+            image 'qawolf/qawolf:v0.9.0-alpha.5'
         }
     }
     stages {

@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: qawolf/qawolf:v0.9.0-alpha.4
+      - image: qawolf/qawolf:v0.9.0-alpha.5
     steps:
       - checkout
 
