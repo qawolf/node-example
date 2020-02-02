@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'circleci/node:12.14.0-browsers'
+            image 'qawolf/qawolf:v0.9.0-alpha.4'
         }
     }
     stages {
@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh 'rm -rf ./artifacts' // delete old artifacts
                 sh 'npm run start & npx wait-on http://localhost:3000'
-                sh 'npx qawolf test'
+                sh 'npx qawolf test --all-browsers'
             }
         }
     }
