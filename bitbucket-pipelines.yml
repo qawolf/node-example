@@ -2,12 +2,12 @@ pipelines:
   default:
     - step:
         name: Test
-        image: qawolf/qawolf:v0.8.2
+        image: qawolf/qawolf:v0.9.0-alpha.5
         caches:
           - node
         script:
           - npm install
           - npm run start & npx wait-on http://localhost:3000
-          - QAW_ARTIFACT_PATH=artifacts npx qawolf test
+          - QAW_ARTIFACT_PATH=artifacts npx qawolf test --all-browsers
         artifacts:
           - artifacts/**
