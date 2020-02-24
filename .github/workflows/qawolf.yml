@@ -13,7 +13,7 @@ jobs:
           # chromium dependencies
           sudo apt-get install libgbm1
           # webkit dependencies
-          sudo apt-get install libwoff1 libopus0 libwebp6 libwebpdemux2 libenchant1c2a libgudev-1.0-0 libsecret-1-0 libhyphen0 libgdk-pixbuf2.0-0 libegl1 libgles2 libevent-2.1-6 libnotify4 libxslt1.1
+          sudo apt-get install libwoff1 libopus0 libwebp6 libwebpdemux2 libenchant1c2a libgudev-1.0-0 libsecret-1-0 libhyphen0 libgdk-pixbuf2.0-0 libegl1 libgles2 libevent-2.1-6 libnotify4 libvpx5 libxslt1.1
 
       - uses: actions/checkout@v2
 
@@ -31,10 +31,9 @@ jobs:
       - name: Start local server
         run: npm run start & npx wait-on http://localhost:3000
 
-      - run: npx qawolf test --all-browsers
+      - run: npx qawolf test
         env:
           QAW_ARTIFACT_PATH: ${{ github.workspace }}/artifacts
-          URL: http://localhost:3000
 
       - name: Upload Artifacts
         if: always()

@@ -17,6 +17,7 @@ addons:
       - libgles2
       - libevent-2.1-6
       - libnotify4
+      - libvpx5
       - libxslt1.1
       # This is required to run chromium
       - libgbm1

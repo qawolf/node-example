@@ -2,21 +2,21 @@ const { launch } = require("qawolf");
 const selectors = require("../selectors/learn");
 
 describe("learn", () => {
-  let context;
+  let browser;
 
   beforeAll(async () => {
-    context = await launch({
+    browser = await launch({
       url: process.env.URL || "http://localhost:3000/"
     });
   });
 
-  afterAll(() => context.close());
+  afterAll(() => browser.close());
 
   it('can click "Learn React" link', async () => {
-    await context.click(selectors[0]);
+    await browser.click(selectors[0]);
   });
 
   it('can click "Docs" link', async () => {
-    await context.click(selectors[1], { page: 1 });
+    await browser.click(selectors[1], { page: 1 });
   });
 });
