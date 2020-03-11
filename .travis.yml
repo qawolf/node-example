@@ -21,17 +21,15 @@ addons:
       - libxslt1.1
       # This is required to run chromium
       - libgbm1
-      # this is needed for running headful tests
-      - xvfb
 cache:
   directories:
     - node_modules
 env:
-  - QAW_ARTIFACT_PATH=artifacts QAW_LOG_LEVEL=debug URL=http://localhost:3000
+  - QAW_ARTIFACT_PATH=artifacts
 script:
   - "npm run start &"
   - "npx wait-on http://localhost:3000"
-  - "npx qawolf test --all-browsers"
+  - "npx qawolf test --all-browsers --headless"
 jobs:
   include:
     - node_js: "12"
