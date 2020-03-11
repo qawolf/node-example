@@ -1,22 +1,24 @@
-const { launch } = require("qawolf");
-const selectors = require("../selectors/learn");
+const qawolf = require("qawolf");
+const selectors = require("../selectors/learn.json");
 
-describe("learn", () => {
-  let browser;
+let browser;
+let page;
 
-  beforeAll(async () => {
-    browser = await launch({
-      url: process.env.URL || "http://localhost:3000/"
-    });
-  });
+beforeAll(async () => {
+  browser = await qawolf.launch();
+  const context = await browser.newContext();
+  await qawolf.register(context);
+  page = await context.newPage();
+});
 
-  afterAll(() => browser.close());
+afterAll(async () => {
+  await qawolf.stopVideos();
+  await browser.close();
+});
 
-  it('can click "Learn React" link', async () => {
-    await browser.click(selectors[0]);
-  });
-
-  it('can click "Docs" link', async () => {
-    await browser.click(selectors[1], { page: 1 });
-  });
+test("learn", async () => {
+  await page.goto(process.env.URL || "http://localhost:3000/");
+  await page.click(selectors["0_a"]);
+  page = await qawolf.waitForPage(page.context(), 1);
+  await page.click(selectors["1_a"]);
 });

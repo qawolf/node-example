@@ -1,7 +1,12 @@
 name: qawolf
 on:
   push:
+    # test every branch
+    # edit below if you only want certain branches tested
     branches: "*"
+  # schedule:
+  #   # test on schedule using cron syntax
+  #   - cron: "0 * * * *" # every hour
 jobs:
   test:
     runs-on: ubuntu-18.04
@@ -31,9 +36,13 @@ jobs:
       - name: Start local server
         run: npm run start & npx wait-on http://localhost:3000
 
-      - run: npx qawolf test --all-browsers
+      - run: npx qawolf test --headless --all-browsers
         env:
+          # configure tests with environment variables
           QAW_ARTIFACT_PATH: ${{ github.workspace }}/artifacts
+          # you can also use GitHub secrets for environment variables
+          # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets
+          # LOGIN_PASSWORD: ${{ secrets.PASSWORD }}
 
       - name: Upload Artifacts
         if: always()

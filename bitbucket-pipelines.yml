@@ -1,13 +1,15 @@
 pipelines:
   default:
     - step:
-        name: Test
-        image: qawolf/qawolf:v0.9.3-alpha.0
+        name: QA Wolf Tests
+        image: qawolf/playwright-ci:v0.6.0
         caches:
           - node
         script:
           - npm install
+
+          # Start local server
           - npm run start & npx wait-on http://localhost:3000
-          - QAW_ARTIFACT_PATH=artifacts npx qawolf test --all-browsers
+          - QAW_ARTIFACT_PATH=artifacts npx qawolf test --headless --all-browsers
         artifacts:
           - artifacts/**
