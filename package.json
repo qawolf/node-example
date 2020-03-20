@@ -32,7 +32,8 @@
     ]
   },
   "devDependencies": {
-    "qawolf": "^0.12.0-beta.4",
+    "playwright": "0.11.1-next.1583909126688",
+    "qawolf": "0.12.3-4",
     "wait-on": "^3.3.0"
   }
 }

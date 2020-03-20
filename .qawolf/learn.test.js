@@ -1,5 +1,5 @@
 const qawolf = require("qawolf");
-const selectors = require("../selectors/learn.json");
+const selectors = require("./selectors/learn.json");
 
 let browser;
 let page;
@@ -16,9 +16,12 @@ afterAll(async () => {
   await browser.close();
 });
 
-test("learn", async () => {
-  await page.goto(process.env.URL || "http://localhost:3000/");
+test('learn', async () => {
+  await page.goto("http://localhost:3000/");
   await page.click(selectors["0_a"]);
   page = await qawolf.waitForPage(page.context(), 1);
   await page.click(selectors["1_a"]);
+  await page.click(selectors["2_search_input"]);
+  await page.type(selectors["3_search_input"], "create");
+  await page.click(selectors["4_option_66433675_div"]);
 });
