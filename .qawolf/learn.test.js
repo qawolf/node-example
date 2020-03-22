@@ -17,11 +17,8 @@ afterAll(async () => {
 });
 
 test('learn', async () => {
-  await page.goto("http://localhost:3000/");
+  await page.goto("localhost:3000");
   await page.click(selectors["0_a"]);
   page = await qawolf.waitForPage(page.context(), 1);
   await page.click(selectors["1_a"]);
-  await page.click(selectors["2_search_input"]);
-  await page.type(selectors["3_search_input"], "create");
-  await page.click(selectors["4_option_66433675_div"]);
 });
