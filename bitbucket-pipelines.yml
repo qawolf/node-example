@@ -2,7 +2,7 @@ pipelines:
   default:
     - step:
         name: QA Wolf Tests
-        image: qawolf/playwright-ci:v0.6.0
+        image: qawolf/playwright-ci:v0.7.0
         caches:
           - node
         script:
@@ -10,6 +10,7 @@ pipelines:
 
           # Start local server
           - npm run start & npx wait-on http://localhost:3000
+          - FFMPEG_PATH=/usr/bin/ffmpeg # for recording video
           - QAW_ARTIFACT_PATH=artifacts npx qawolf test --headless --all-browsers
         artifacts:
           - artifacts/**
