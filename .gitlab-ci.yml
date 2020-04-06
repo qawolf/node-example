@@ -12,8 +12,6 @@ qawolf:
     - npx qawolf test --headless --all-browsers
 
   variables:
-    # configure tests with environment variables
-    FFMPEG_PATH: /usr/bin/ffmpeg # for recording video
     QAW_ARTIFACT_PATH: $CI_PROJECT_DIR/artifacts
 
   artifacts:

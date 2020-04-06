@@ -25,8 +25,6 @@ steps:
 
   - script: npx qawolf test --headless --all-browsers
     env:
-      # configure tests with environment variables
-      FFMPEG_PATH: /usr/bin/ffmpeg # for recording video
       QAW_ARTIFACT_PATH: $(System.DefaultWorkingDirectory)/artifacts
 
   - publish: $(System.DefaultWorkingDirectory)/artifacts
