@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh 'rm -rf ./artifacts' // delete old artifacts
                 sh 'npm run start & npx wait-on http://localhost:3000'
-                sh 'npx qawolf test --all-browsers'
+                sh 'npx qawolf test'
             }
         }
     }

@@ -29,7 +29,7 @@ env:
 script:
   - "npm run start &"
   - "npx wait-on http://localhost:3000"
-  - "npx qawolf test --all-browsers --headless"
+  - "npx qawolf test --headless"
 jobs:
   include:
     - node_js: "12"

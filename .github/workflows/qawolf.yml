@@ -38,7 +38,7 @@ jobs:
       - name: Start local server
         run: npm run start & npx wait-on http://localhost:3000
 
-      - run: npx qawolf test --headless --all-browsers
+      - run: npx qawolf test --headless
         env:
           # configure tests with environment variables
           QAW_ARTIFACT_PATH: ${{ github.workspace }}/artifacts

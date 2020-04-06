@@ -10,6 +10,6 @@ pipelines:
 
           # Start local server
           - npm run start & npx wait-on http://localhost:3000
-          - QAW_ARTIFACT_PATH=artifacts npx qawolf test --headless --all-browsers
+          - QAW_ARTIFACT_PATH=artifacts npx qawolf test --headless
         artifacts:
           - artifacts/**

@@ -23,7 +23,7 @@ steps:
   # Start local server
   - script: npm run start & npx wait-on http://localhost:3000
 
-  - script: npx qawolf test --headless --all-browsers
+  - script: npx qawolf test --headless
     env:
       QAW_ARTIFACT_PATH: $(System.DefaultWorkingDirectory)/artifacts
 
