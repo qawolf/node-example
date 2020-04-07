@@ -21,7 +21,7 @@ steps:
   - script: npm install
 
   # Start local server
-  - start-process: npm run start
+  - script: npm run start &
 
   - script: |
       npx wait-on http://localhost:3000
