@@ -21,9 +21,11 @@ steps:
   - script: npm install
 
   # Start local server
-  - script: npm run start & npx wait-on http://localhost:3000
+  - start-process: npm run start
 
-  - script: npx qawolf test --headless
+  - script: |
+      npx wait-on http://localhost:3000
+      npx qawolf test --headless
     env:
       QAW_ARTIFACT_PATH: $(System.DefaultWorkingDirectory)/artifacts
 
