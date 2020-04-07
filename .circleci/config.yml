@@ -19,11 +19,13 @@ jobs:
 
       - run:
           command: |
-            # Start local server
-            npm run start & 
-            npx wait-on http://localhost:3000
-            npx qawolf test --headless
+            npm run start
           background: true
+
+      - run:
+          command: |
+            npx wait-on http://localhost:3000 &&
+            npx qawolf test --headless
           environment:
             # configure tests with environment variables
             QAW_ARTIFACT_PATH: /tmp/artifacts
