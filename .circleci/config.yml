@@ -2,20 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: qawolf/playwright-ci:v0.7.0
+      - image: qawolf/playwright-ci:v1.0.0
     steps:
       - checkout
 
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-
       - run:
           command: npm install
-
-      - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-          paths:
-            - ./node_modules
 
       - run:
           command: |

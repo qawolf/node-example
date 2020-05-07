@@ -1,5 +1,4 @@
 const qawolf = require("qawolf");
-const selectors = require("./selectors/learn.json");
 
 let browser;
 let page;
@@ -16,9 +15,15 @@ afterAll(async () => {
   await browser.close();
 });
 
-test('learn', async () => {
-  await page.goto("localhost:3000");
-  await page.click(selectors["0_a"]);
+test("learn", async () => {
+  await page.goto("http://localhost:3000/");
+  await page.click("text=Learn React");
   page = await qawolf.waitForPage(page.context(), 1);
-  await page.click(selectors["1_a"]);
+  await page.click("text=Docs");
+  await page.click("text=Tutorial");
+  await page.click("text=Blog");
+  await page.click("text=Community");
+  await page.click("#algolia-doc-search");
+  await page.type("#algolia-doc-search", "hooks");
+  await page.press("#algolia-doc-search", "Enter");
 });
