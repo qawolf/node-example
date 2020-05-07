@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'qawolf/qawolf:v0.9.3-alpha.0'
+            image 'qawolf/playwright-ci:v1.0.0'
         }
     }
     stages {
@@ -13,19 +13,18 @@ pipeline {
         stage('Test') {
             environment { 
                 // configure tests with environment variables
-                // https://docs.qawolf.com/docs/configuration
                 QAW_ARTIFACT_PATH = './artifacts'
             }
             steps {
-                sh 'rm -rf ./artifacts' // delete old artifacts
+                // Start local server
                 sh 'npm run start & npx wait-on http://localhost:3000'
-                sh 'npx qawolf test'
+                sh 'npx qawolf test --headless'
             }
         }
-    }
-    post {
-        always {
-            archiveArtifacts(artifacts: 'artifacts/**/*.*', fingerprint: true) 
+        post {
+            always {
+                archiveArtifacts(artifacts: 'artifacts/**/*.*', fingerprint: true) 
+            }
         }
     }
 }

@@ -32,8 +32,8 @@
     ]
   },
   "devDependencies": {
-    "playwright": "~0.12.1",
-    "qawolf": "~0.12.4",
+    "playwright": "^1.0.0",
+    "qawolf": "^1.0.0",
     "wait-on": "^4.0.1"
   }
 }
